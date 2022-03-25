@@ -51,36 +51,17 @@ export const PokedexCard: React.FC<PokedexCardProps> = ({pokemon}) => {
 
     return (
         <>
-           {/* <Card onClick={handleClick}>
-            {pokemon.name}  
-           </Card>  */}
-
-           <Card>
+           <Card onClick={handleClick}>
                <CardMedia
-        style={{height: 0, paddingTop: '56%'}}
-        image={pokemon.sprites.front_default}
-        title="Paella dish"
-      />
-      <CardHeader
-        title={pokemon.name}
-        subheader={pokemon.types.map((type) => <Chip label={type.type.name} color="primary" size="small" />)}
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton onClick={handleClick} aria-label="add to favorites">
-          <OpenInBrowser />
-        </IconButton>
-        <IconButton aria-label="share" disabled>
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
-
-    </Card>
+                style={{height: 0, paddingTop: '56%'}}
+                image={pokemon.sprites.front_default}
+                title="Paella dish"
+                />
+                <CardHeader
+                    title={pokemon.name}
+                    subheader={pokemon.types.map((type) => <Chip label={type.type.name} color="primary" size="small" />)}
+                />
+            </Card>
         </>
     );
 };
