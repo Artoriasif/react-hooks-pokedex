@@ -50,8 +50,50 @@ export const PokemonDetails: React.FC<pokemonDetailsProps> = () => {
         </nav>
         <Container maxWidth="lg" >
             <Box mt={2}>
-                <img src={selectedPokemonDetails?.sprites.front_default} alt="imagem do pokemon"/>
+                <img  width='100%' height='auto' src={selectedPokemonDetails?.sprites.front_default} alt="imagem do pokemon"/>
             </Box>
+            <Typography variant='h2'>
+                {selectedPokemonDetails?.name}
+            </Typography>
+            {/* {selectedPokemonDetails?.types.map((type) => <Typography>{type.type.name}</Typography>)} */}
+            <Box display="flex" flexDirection="row">
+                <Typography>
+                    Especie: 
+                </Typography>
+                <Typography>
+                    {selectedPokemonDetails?.species.name}
+                </Typography>
+            </Box>
+            <Box display="flex" flexDirection="row">
+                <Typography>
+                    Altura: 
+                </Typography>
+                <Typography>
+                    {selectedPokemonDetails?.height}
+                </Typography>
+            </Box>
+            <Box display="flex" flexDirection="row">
+                <Typography>
+                    Peso: 
+                </Typography>
+                <Typography>
+                    {selectedPokemonDetails?.weight}
+                </Typography>
+            </Box>
+
+            <Box display="flex" flexDirection="row" justifyContent="space-around">
+                <Typography>
+                    Habilidades: 
+                </Typography>
+                <Typography>
+                    {selectedPokemonDetails?.abilities.map((ability) => <Typography>{ability.ability.name}</Typography>)}
+                </Typography>
+            </Box>
+
+           
+            
+            
+            
         </Container>
             
         </div>
