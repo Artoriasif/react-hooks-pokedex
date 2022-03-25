@@ -1,10 +1,9 @@
-import { Pokedex } from "./pokedex/Pokedex";
-
+import {AppRoutes} from './AppRoutes'
 //Material - ui
 const App: React.FC = () => {
   return(
     <>
-      <Pokedex/>
+      <AppRoutes/>
     </>
   )
 }

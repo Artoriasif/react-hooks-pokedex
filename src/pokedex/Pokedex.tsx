@@ -15,6 +15,7 @@ import {Box} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import {useNavigate} from "react-router-dom"
 
 
 interface PokedexProps {
@@ -28,7 +29,7 @@ export const Pokedex: React.FC<PokedexProps> = () => {
 
     const [pokemons, setPokemons] = useState<PokemonListInterface[]>([]); //faz a leitura dos dados || modifica os dados
     const [selectedPokemon, setSelectedPokemon ] = useState<PokemonListInterface | undefined>(undefined);
-    const [selectedPokemonDetails, setSelectedPokemonDetails ] = useState<PokemonDetail| undefined>(undefined);
+    const navigate = useNavigate();
 
     useEffect(() => {
        ListPokemons().then((response) => setPokemons(response.results)) 
@@ -36,13 +37,9 @@ export const Pokedex: React.FC<PokedexProps> = () => {
 
     }, []);
 
-    useEffect(() => {
-        if(!selectedPokemon) return;
-        GetPokemonsDetails(selectedPokemon.name).then((response) => setSelectedPokemonDetails(response)) 
-        
-        
-        
-    }, [selectedPokemon]);
+    function handleClick(pokemon: PokemonListInterface){
+        navigate(`/pokemon/${pokemon.name}`)
+    }
 
     return (
         <div>
@@ -66,25 +63,24 @@ export const Pokedex: React.FC<PokedexProps> = () => {
                             <>
                                 <Grid item xs={6} lg={3}>
                                     <Card variant="outlined">
-      <CardContent>
-        <Typography  color="textSecondary" gutterBottom>
-        </Typography>
-        <Typography variant="h5" component="h2">
-         {pokemon.name}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button onClick={() => setSelectedPokemon(pokemon)} size="small">Abrir</Button>
-      </CardActions>
-    </Card>
+                                        <CardContent>
+                                            <Typography  color="textSecondary" gutterBottom>
+                                            </Typography>
+                                            <Typography variant="h5" component="h2">
+                                                {pokemon.name}
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                            <Button onClick={() => handleClick(pokemon)} size="small">Abrir</Button>
+                                        </CardActions>
+                                    </Card>
                                 </Grid>
                             </>
                              ))}
                        
                     </Grid>
                     
-                    <h2>Pokemon selecionado: {selectedPokemon?.name || `Nenhum pokemon selecionado`}</h2>
-                    {JSON.stringify(selectedPokemonDetails, undefined, 2)}
+                   
                 </Box>
             </Container>
         </div>
