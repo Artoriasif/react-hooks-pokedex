@@ -24,7 +24,7 @@ interface PokedexProps {
 
 export const Pokedex: React.FC<PokedexProps> = () => {
 
-    const [pokemons, setPokemons] = useState<PokemonListInterface[]>([]); //faz a leitura dos dados || modifica os dados
+    const [pokemons, setPokemons] = useState<PokemonDetail[]>([]); //faz a leitura dos dados || modifica os dados
     const [selectedPokemon, setSelectedPokemon] = useState<PokemonListInterface | undefined>(undefined);
     
 
